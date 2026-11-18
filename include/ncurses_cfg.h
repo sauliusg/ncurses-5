@@ -53,7 +53,6 @@
 #endif
 #define HAVE_LONG_FILE_NAMES 1
 #define MIXEDCASE_FILENAMES 1
-#define HAVE_LIBDL 1
 #define USE_DATABASE 1
 #define TERMINFO_DIRS "/usr/share/terminfo"
 #define TERMINFO "/usr/share/terminfo"
@@ -67,7 +66,6 @@
 #define HAVE_SYMLINK 1
 #define USE_LINKS 1
 #define HAVE_LANGINFO_CODESET 1
-#define _FILE_OFFSET_BITS 64
 #define HAVE_FSEEKO 1
 #define HAVE_CURSES_VERSION 1
 #define HAVE_HAS_KEY 1
@@ -118,7 +116,7 @@
 #define HAVE_WCTYPE_H 1
 #define HAVE_SYS_TIME_SELECT 1
 #define SIG_ATOMIC_T volatile sig_atomic_t
-#define TYPEOF_CHTYPE long
+#define TYPEOF_CHTYPE int
 #define HAVE_GETCWD 1
 #define HAVE_GETEGID 1
 #define HAVE_GETEUID 1
@@ -130,7 +128,6 @@
 #define HAVE_SETBUFFER 1
 #define HAVE_SETVBUF 1
 #define HAVE_SIGACTION 1
-#define HAVE_SIGVEC 1
 #define HAVE_STRDUP 1
 #define HAVE_STRSTR 1
 #define HAVE_TCGETPGRP 1
@@ -146,7 +143,6 @@
 #define HAVE_MKSTEMP 1
 #define RETSIGTYPE void
 #define HAVE_SIZECHANGE 1
-#define HAVE_WORKING_POLL 1
 #define USE_OPENPTY_HEADER <pty.h>
 #define USE_XTERM_PTY 1
 #define HAVE_IOSTREAM 1
