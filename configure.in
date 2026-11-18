@@ -61,6 +61,13 @@ CF_CFG_DEFAULTS
 AC_PROG_CC
 CF_GCC_VERSION
 
+# The configure probes rely on pre-C23 declarations and implicit functions.
+case $GCC_VERSION in
+1[[4-9]].*|[[2-9]][[0-9]].*)
+	CFLAGS="-std=gnu89 $CFLAGS"
+	;;
+esac
+
 AC_PROG_CPP
 AC_PROG_GCC_TRADITIONAL
 CF_PROG_CC_C_O(CC)
@@ -100,11 +107,20 @@ else
 fi
 
 CF_GXX_VERSION
+# The C++ binding uses dynamic exception specifications.
 case $GXX_VERSION in
-1*|2.[[0-6]]*)
+1[[1-9]].*|[[2-9]][[0-9]].*)
+	CXXFLAGS="-std=gnu++98 $CXXFLAGS"
+	;;
+1.*|2.[[0-6]]*)
 	# GXX=""; CXX=""; ac_cv_prog_gxx=no
 	# cf_cxx_library=no
 	AC_MSG_WARN(templates do not work)
+	;;
+esac
+case $GXX_VERSION in
+1[[6-9]].*|[[2-9]][[0-9]].*)
+	CXXFLAGS="-Wno-error=template-body $CXXFLAGS"
 	;;
 esac
 

@@ -2098,6 +2098,13 @@ echo $ECHO_N "checking version of $CC... $ECHO_C" >&6
 echo "${ECHO_T}$GCC_VERSION" >&6
 fi
 
+# The configure probes rely on pre-C23 declarations and implicit functions.
+case $GCC_VERSION in
+1[4-9].*|[2-9][0-9].*)
+	CFLAGS="-std=gnu89 $CFLAGS"
+	;;
+esac
+
 ac_ext=c
 ac_cpp='$CPP $CPPFLAGS'
 ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
@@ -3077,12 +3084,21 @@ echo $ECHO_N "checking version of g++... $ECHO_C" >&6
 echo "${ECHO_T}$GXX_VERSION" >&6
 fi
 
+# The C++ binding uses dynamic exception specifications.
 case $GXX_VERSION in
-1*|2.[0-6]*)
+1[1-9].*|[2-9][0-9].*)
+	CXXFLAGS="-std=gnu++98 $CXXFLAGS"
+	;;
+1.*|2.[0-6]*)
 	# GXX=""; CXX=""; ac_cv_prog_gxx=no
 	# cf_cxx_library=no
 	{ echo "$as_me:3084: WARNING: templates do not work" >&5
 echo "$as_me: WARNING: templates do not work" >&2;}
+	;;
+esac
+case $GXX_VERSION in
+1[6-9].*|[2-9][0-9].*)
+	CXXFLAGS="-Wno-error=template-body $CXXFLAGS"
 	;;
 esac
 
