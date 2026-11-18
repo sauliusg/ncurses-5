@@ -58,7 +58,7 @@ private:
     const PANEL*        m_owner;     // the panel itself
   } UserHook;
 
-  inline UserHook *UserPointer()
+  inline UserHook *UserPointer() const
   {
     UserHook* uptr = reinterpret_cast<UserHook*>(
                            const_cast<void *>(::panel_userptr (p)));
@@ -77,7 +77,7 @@ protected:
   }
   // Set the user pointer of the panel.
 
-  void *get_user()
+  void *get_user() const
   {
     UserHook* uptr = UserPointer();
     void *result = 0;

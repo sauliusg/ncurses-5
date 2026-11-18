@@ -381,7 +381,7 @@ protected:
     uptr->m_user = user;
   }
 
-  inline void *get_user() {
+  inline void *get_user() const {
     UserHook* uptr = reinterpret_cast<UserHook*>(::form_userptr (form));
     assert (uptr != 0 && uptr->m_back==this && uptr->m_owner==form);
     return uptr->m_user;

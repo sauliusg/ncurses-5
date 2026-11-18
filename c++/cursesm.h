@@ -242,7 +242,7 @@ protected:
     uptr->m_user = user;
   }
 
-  inline void *get_user() {
+  inline void *get_user() const {
     UserHook* uptr = STATIC_CAST(UserHook*)(::menu_userptr (menu));
     assert (uptr != 0 && uptr->m_back==this && uptr->m_owner==menu);
     return uptr->m_user;
